@@ -24,6 +24,10 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata('fb',$data['user_data']);
 		saveUserData($data['user_data']);
 		$this->template->load('template', 'init', $data);
+		$this->session->set_userdata('fb',$data['user_data']);
+		$this->session->set_userdata('id',$data['user_data']['id']);
+		
+		saveUserData($data['user_data']);
 	}
 	public function imagenes(){
 		$this->load->view('imagenes');
