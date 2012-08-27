@@ -4,7 +4,11 @@ class Test extends CI_Controller {
 	public function index()
 	{
 		global $facebook;
-		echo Facebook::getLoginUrl();
+		$access_token = $facebook->getAccessToken();
+		$user = $facebook->getUser();
+		
+		$user_data=$facebook->api('/'.$user,'GET');
+		
 		$this->load->view('test/fb.php');
 	}
 }
