@@ -20,9 +20,10 @@ class Welcome extends CI_Controller {
 		global $facebook;
 		$access_token = $facebook->getAccessToken();
 		$user = $facebook->getUser();
-		$user_data=$facebook->api('/'.$user,'GET');
-		print_r($user_data);
-		
-
+		$data['user_data']=$facebook->api('/'.$user,'GET');
+		$this->template->load('template', 'init', $data);
+	}
+	public function imagenes(){
+		$this->load->view('imagenes');
 	}
 }
