@@ -28,9 +28,23 @@ class Welcome extends CI_Controller {
 		saveUserData($data['user_data']);
 	}
 	public function imagenes(){
-		$this->load->view('imagenes');
+		global $facebook;
+		$user = $facebook->getUser();
+		$data['imagenes']=filterPosts($user, 'photo');
+		$this->load->view('imagenes',$data);
 	}
 	public function videos(){
-		$this->load->view('videos');
+		global $facebook;
+		$user = $facebook->getUser();
+		$data['videos']=filterPosts($user, 'video');
+		//print_r($data['videos']);
+		$this->load->view('videos',$data);
+	}
+	public function links(){
+		global $facebook;
+		$user = $facebook->getUser();
+		$data['links']=filterPosts($user, 'link');
+		//print_r($data['links']);
+		$this->load->view('links',$data);
 	}
 }

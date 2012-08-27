@@ -1,36 +1,17 @@
-._items{
-	cursor: pointer;
+.imagenes_lista{
+	height: 280px;
 	overflow: hidden;
-	line-height: 1em;
 }
-.item-data{
-	width: 240px;
-}
-.resultados{
-	overflow: auto;
-}
-.desc{
-	overflow: auto;
-	position: relative;
-}
-.desc_tools{
-	background-color: white;
-	margin-bottom: .2em;
-}
-.desc_tools p{
-	margin-top: .3em;
-}
-.pricing{
-	font-size: 1.4em;
-}
-.desc_imgs, .desc_data{
+.imagen_ver{
+	height: 120px;
+	overflow: hidden;
+	text-align: center !important;
 	width: 100%;
-	display:block;
 }
-.desc_data *{
-	font-size: 1em !important;
-	color: black !important;
+.imagen_ver img{
+	max-height: 120px;
 }
-.desc_data{
-	margin-top:1em;
+.text_ver{
+	height: 100px;
+	overflow: hidden;
 }

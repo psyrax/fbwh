@@ -17,7 +17,7 @@
 			  <li class="nav-header">Mis cosas</li>
 			  <li class="imagenes"><a href="#" data-dest="imagenes" class="jlink">Imagenes</a></li>
 			  <li class="videos"><a href="#" data-dest="videos" class="jlink">Videos</a></li>
-			  <li class="links"><a href="#" data-dest="links" class="jlink">links</a></li>
+			  <li class="links"><a href="#" data-dest="links" class="jlink">Enlaces</a></li>
 			</ul>
 		</div>
 		<div class="span10 contenido">
@@ -34,6 +34,9 @@
 			var dest=$(this).data('dest');
 			$.ajax({
 			  url: '<?= site_url("welcome"); ?>/'+dest,
+			  beforeSend: function(){
+			  	$('.contenido').html('<div style="text-align:center;"><img src="<?= base_url(); ?>statics/img/loader.gif" /><br />Cargando... brb</div>');
+			  },
 			  success: function(data) {
 			  	$('.nav li').removeClass('active');
 			  	$('.'+dest).addClass('active');
