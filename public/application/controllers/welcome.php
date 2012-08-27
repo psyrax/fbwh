@@ -14,7 +14,7 @@ class Welcome extends CI_Controller {
 		$facebook->getLogoutUrl($params);
 
 		$this->session->sess_destroy();
-		header("Location:./");
+		header("Location:".site_url('welcome'));
        }
        
 	public function index()
@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 		global $facebook;
 		$fbid=$this->session->userdata('id');
 		if($fbid){
-			header("Location:init");
+			header("Location:".site_url('welcome/init'));
 			exit(0);
 		}
 		
@@ -54,5 +54,11 @@ class Welcome extends CI_Controller {
 	
 	public function videos(){
 		$this->load->view('videos');
+	}
+	
+	public function favoritos(){
+		$fbid=$this->session->userdata('id');
+		$posts=listUserPost($fbid);
+		$this->load->view('favoritos',array('posts'=>$posts));
 	}
 }

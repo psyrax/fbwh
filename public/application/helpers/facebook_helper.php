@@ -2,16 +2,21 @@
 define('DB','db/');
 //Helpers
 
-function saveUserPost($idPost){
-    
+function saveUserPost($post,$fbid){
+    file_put_contents(DB.$fbid."/post_".$post['post_id'],serialize($post));
 }
 
-function deleteUserPost($idPost){
-    
+function deleteUserPost($idPost,$fbid){
+    unlink(DB.$fbid."/".$post['post_id']);
 }
 
 function listUserPost($fbid){
-    
+    $result=null;
+    $posts=glob(DB.$fbid."/post_[0-9]*");
+    foreach($posts as $post){
+        $result[]=unserialize(file_get_contents($post));
+    }
+    return $result;
 }
 
 // $media_type = photo
@@ -81,21 +86,20 @@ FROM stream WHERE source_id = ".$fbid." limit 100";
     return $result;
 }
 
-function saveListPost($array_data,$fbid){
-    if(is_array($array_data) && count($array_data)){
-        if(!file_exists(DB.$fbid))
-            mkdir(DB.$fbid);
-        file_put_contents(DB.$fbid."/list",serialize($array_data));
-    }
-}
 
-function getListPosts($fbId){
-    $array=null;
-    if(file_exists(DB.$fbId."/list")){
-        $data=file_get_contents(DB.$fbId."/list");
-        $array=unserialize($data);
-    }
-    return $array;
+function listPosts($fbid){
+    $result=null;
+    
+    global $facebook;
+    $access_token = $facebook->getAccessToken();
+    //$fbid=$this->session->userdata('id');
+
+    $sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
+FROM stream WHERE source_id = ".$fbid." limit 100";
+
+    $data = $facebook->api(array('method' => 'fql.query','query' => $sql));
+    
+    return $data;
 }
 
 function saveUserData($array_data){
