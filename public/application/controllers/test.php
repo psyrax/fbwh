@@ -4,8 +4,7 @@ class Test extends CI_Controller {
 	public function index()
 	{
 		global $facebook;
-		print_r($facebook);
-		die("---");
+		echo Facebook::getLoginUrl();
 		$this->load->view('test/fb.php');
 	}
 }
