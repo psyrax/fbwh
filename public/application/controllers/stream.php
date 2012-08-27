@@ -26,7 +26,16 @@ class Stream extends CI_Controller {
 		$data = $facebook->api(array('method' => 'fql.query','query' => $sql));
 		
 		$fbid=$this->session->userdata('id');
-		saveListPost($data,$fbid);
-		$ddd=filterPosts($fbid,$type); //"photo"
+		
+		  foreach($data as $post){
+		      if(key_exists('attachment',$post) && key_exists('media',$post['attachment'])){
+			  foreach($post['attachment']['media'] as $media){
+			      if($media['type']==$media_type)
+				  $result[]=$post;
+			  }
+		      }
+		  }
+		  
+		  die(json_encode($result));
 	}
 }
