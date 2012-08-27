@@ -21,8 +21,8 @@ class Welcome extends CI_Controller {
 		$access_token = $facebook->getAccessToken();
 		$user = $facebook->getUser();
 		$user_data=$facebook->api('/'.$user,'GET');
-		print_r($user_data);
 		
-
+		$this->session->set_userdata('fb',$user_data);
+		saveUserData($user_data);
 	}
 }
