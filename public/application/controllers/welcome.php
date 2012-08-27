@@ -9,7 +9,7 @@ class Welcome extends CI_Controller {
 	{
 		global $facebook;
 		$params = array(
-  		'scope' => 'read_stream, friends_likes',
+  		'scope' => 'read_stream, friends_likes, user_likes,user_photos,user_status,read_stream, publish_stream',
   		'redirect_uri' => site_url('welcome/init')
 		);
 		$data=array();
