@@ -3,14 +3,15 @@
 	<li class="span3">
     <div class="thumbnail imagenes_lista">
         <div class="imagen_ver">
-      	   <img src="<?= $imagen['attachment']['media']['0']['src'] ?>" alt="" />
+          <?php $imagen_normal=str_replace("_s.", "_n.", $imagen['attachment']['media']['0']['src']);?>
+      	   <img src="<?= $imagen_normal; ?>" alt="" />
         </div>
-      <p class="text_ver"><?= $imagen['attachment']['caption']  ?></p>
+      <p class="text_ver"><?= $imagen['attachment']['caption']; ?></p>
 
         <p>
           <a href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-mini btn-info" target="_blank">Ver en Facebook</a>
           <button data-fav="<?= $imagen['post_id']; ?>" class="btn btn-success btn-mini faver">Agregar a favoritos</button>
-          <button data-fav="<?= $imagen['post_id']; ?>" class="btn btn-inverse btn-mini sharer">Compartir</button>
+          <?php /* <button data-img="<?= $imagen['attachment']['media']['0']['src']; ?>" data-desc="<?= $imagen['attachment']['caption']; ?>"  data-href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-inverse btn-mini sharer">Compartir</button> */?>
       </p>
     </div>
     </li>
@@ -31,24 +32,22 @@
       $(this).remove();
     })
     $('.sharer').on('click', function(){
-      new sendMessage();
-    })
-  })
-  function sendMessage(){
-
+      var uid = "<?= $user; ?>";
+      var message = "Ve esto:";
+      var desc = $(this).data('caption');
+      var link =$(this).data('href');
+      var img = $(this).data('img');
+      new sendMessage(uid,message,desc,link,img);
+    });
+  });
+  function sendMessage(uid,message,desc,link,img){
   var fb = new FacebookConnect(false, function(response){
-    var uid = "<?= $user; ?>";
-    var message = "Mensaje";
-    var desc = "Descripcion";
-    var link = "http://www.github.com";
-    var img = "https://a248.e.akamai.net/assets.github.com/images/modules/header/logo_white.png";
     fb.sendMensage(message, uid, link, img, desc, function(response){
       for(r in response){
         console.log(response[r]);
       }
     });
   });
-);
   
   }
 </script>
