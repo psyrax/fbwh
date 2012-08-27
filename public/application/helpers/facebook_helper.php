@@ -15,6 +15,46 @@ function listUserPost($fbid){
 }
 
 // $media_type = photo
+
+function filterPostKeywords($fbid,$words){
+    global $facebook;
+    $access_token = $facebook->getAccessToken();
+    //$fbid=$this->session->userdata('id');
+
+		$sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
+      	FROM stream WHERE source_id = ".$fbid." limit 100";
+
+		$data = $facebook->api(array('method' => 'fql.query','query' => $sql));
+		
+		$result=null;
+		
+        $array_words=explode("+",strtolower($words));
+        foreach($data as $post){
+                 $text=$post['message'].$post['message'];
+                 if(key_exists('attachment',$post)){
+                          if(key_exists('name',$post['attachment']))
+                                   $text.="|".$post['attachment']['name'];
+                          if(key_exists('caption',$post['attachment']))
+                                   $text.="|".$post['attachment']['caption'];
+                          if(key_exists('description',$post['attachment']))
+                                   $text.="|".$post['attachment']['description'];
+                          $text=strtolower($text);
+                 }
+                 
+                                                  
+                 $count=0;
+                 foreach($array_words as $word){
+                          if(strpos($text,$word))
+                                   $count++;
+                 }
+                 if(count($array_words)==$count)
+                          $result[]=$post;
+        }
+        
+    return $result;
+}
+
+
 function filterPosts($fbid,$media_type){
     $result=null;
     $posts=getListPosts($fbid);
