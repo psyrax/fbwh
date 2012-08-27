@@ -34,4 +34,19 @@ class Stream extends CI_Controller {
 		  print_r($result);
 		  die("''''''''");
 	}
+	
+	public function mark($idPost){
+		  $fbid=$this->session->userdata('id');
+		  $posts=listPosts($fbid);
+		  $ppp=null;
+		  foreach($posts as $post){
+			   if($post['post_id']==$idPost){
+				    $ppp=$post;
+				    break;
+			   }
+		  }
+		  
+		  saveUserPost($ppp,$fbid);
+		  die('OK');
+	}
 }

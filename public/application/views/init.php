@@ -6,6 +6,9 @@
 				<li>
 			 		<a href="https://github.com/psyrax/fbwh">Forkeame!</a>
 			 	</li>
+				<li>
+			 		<a href="logout">Salir</a>
+			 	</li>
 			</ul>
 		</div>	
 	</div>
@@ -18,6 +21,7 @@
 			  <li class="imagenes"><a href="#" data-dest="imagenes" class="jlink">Imagenes</a></li>
 			  <li class="videos"><a href="#" data-dest="videos" class="jlink">Videos</a></li>
 			  <li class="links"><a href="#" data-dest="links" class="jlink">Enlaces</a></li>
+			  <li class="favoritos"><a href="#" data-dest="favoritos" class="jlink">Favoritos</a></li>
 			</ul>
 		</div>
 		<div class="span10 contenido">
