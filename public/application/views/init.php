@@ -6,6 +6,9 @@
 				<li>
 			 		<a href="https://github.com/psyrax/fbwh">Forkeame!</a>
 			 	</li>
+				<li>
+			 		<a href="logout">Salir</a>
+			 	</li>
 			</ul>
 		</div>	
 	</div>

@@ -5,6 +5,18 @@ class Welcome extends CI_Controller {
        {
             parent::__construct();
        }
+       
+       public function logout(){
+		global $facebook;
+		$access_token = $facebook->getAccessToken();
+		
+		$params = array( 'next' => site_url('welcome') );
+		$facebook->getLogoutUrl($params);
+
+		$this->session->sess_destroy();
+		header("Location:./");
+       }
+       
 	public function index()
 	{
 		global $facebook;
