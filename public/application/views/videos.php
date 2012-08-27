@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?= base_url(); ?>statics/js/jquery.masonry.min.js"></script>
 
 <div id="container">
-  <?php foreach($videos as $video):?>
+  <?php if(is_array($videos) && count($videos))   foreach($videos as $video):?>
 
     <div class="img">
        <?php $video_normal=str_replace("_s.", "_n.", $video['attachment']['media']['0']['src']);?>
@@ -16,7 +16,10 @@
         </p>
       </div>
     </div> 
-  <?php endforeach;?>
+  <?php endforeach;
+  else{?>
+      <li>No se encontraron resultados.</li>
+  <?php } ?>
 </div>
 
 <script>

@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?= base_url(); ?>statics/js/jquery.masonry.min.js"></script>
 
 <div id="container">
-  <?php foreach($posts as $imagen):?>
+  <?php if(is_array($posts) && count($posts))   foreach($posts as $imagen):?>
 
     <div class="img">
        <?php $imagen_normal=str_replace("_s.", "_n.", $imagen['attachment']['media']['0']['src']);?>
@@ -16,7 +16,10 @@
         </p>
       </div>
     </div> 
-  <?php endforeach;?>
+  <?php endforeach;
+  else{?>
+      <li>No se encontraron resultados.</li>
+  <?php } ?>
 </div>
 
 <script>
