@@ -29,7 +29,19 @@
 			  <li class="links"><a href="#" data-dest="links" class="jlink">Enlaces</a></li>
 			  <li class="favoritos"><a href="#" data-dest="favoritos" class="jlink">Favoritos</a></li>
 			</ul>
+			
+			<ul class="nav nav-list">
+			  <li class="nav-header">Amigos usando la App</li>
+			  <?php foreach($friends as $friend){?>
+			  <li class="amigo">
+				<a href="#" data-dest="amigo/<?=$friend['uid']?>" class="jlink">
+					<img src="<?=$friend['pic_square']?>"/>
+				</a>
+			  </li>
+			  <?php } ?>
+			</ul>
 		</div>
+		
 		<div class="span10 contenido">
 			<div class="page-header">
 				<h1>Hola  <?= $user_data['name']; ?></h1>
@@ -41,6 +53,7 @@
 <script>
 	$(document).ready(function(){
 		$('.jlink').on('click',function(){
+			var friend=$(this).parent().attr('class');
 			var dest=$(this).data('dest');
 			$.ajax({
 			  url: '<?= site_url("welcome"); ?>/'+dest,
@@ -48,11 +61,15 @@
 			  	$('.contenido').html('<div style="text-align:center;"><img src="<?= base_url(); ?>statics/img/loader.gif" /><br />Cargando... brb</div>');
 			  },
 			  success: function(data) {
-			  	$('.nav li').removeClass('active');
-			  	$('.'+dest).addClass('active');
-			    $('.contenido').html(data);
+				if(friend!="amigo"){
+					$('.nav li').removeClass('active');
+					$('.'+dest).addClass('active');
+				}
+				$('.contenido').html(data);
 			  }
 			});
+			
+			return false;
 		});
 	});
 </script>
