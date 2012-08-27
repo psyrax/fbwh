@@ -5,6 +5,8 @@ class Welcome extends CI_Controller {
 	{
 		global $facebook;
 		$data=array();
+		$data['login_url']=$facebook->getLoginUrl();
+		print_r($data);
 		$this->template->load('template', 'login', $data);
 	}
 }

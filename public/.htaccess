@@ -1,6 +1,6 @@
 RewriteEngine on
 
-RewriteBase /fb
+RewriteBase /~psyrax/fb
 
-RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteCond $1 !^(index\.php|statics|images|robots\.txt)
 RewriteRule ^(.*)$ index.php/$1 [L]
