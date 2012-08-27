@@ -3,8 +3,8 @@
 		<div class="span12">
 			<div class="hero-unit">
 			  <h1>Galeria de FB</h1>
-			  <p> ¿Recuerdas ese elemento que te gusto en FB y no lo encuentras para mostrarlo a alguien mas?
-			      Ya no mas con tu app.
+			  <p> ¿Recuerdas ese elemento que te gust&oacute; en FB y no lo encuentras para mostrarlo a alguien mas?
+			      Ya no mas con nuestra app.
 			  </p>
 			  <p>
 			    <a class="btn btn-primary btn-large" href="<?= $login_url; ?>">

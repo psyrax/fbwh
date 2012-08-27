@@ -22,11 +22,9 @@ class Welcome extends CI_Controller {
 		$user = $facebook->getUser();
 		$data['user_data']=$facebook->api('/'.$user,'GET');
 		$this->session->set_userdata('fb',$data['user_data']);
-		saveUserData($data['user_data']);
 		$this->template->load('template', 'init', $data);
 		$this->session->set_userdata('fb',$data['user_data']);
 		$this->session->set_userdata('id',$data['user_data']['id']);
-		
 		saveUserData($data['user_data']);
 	}
 	public function imagenes(){
