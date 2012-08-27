@@ -4,12 +4,11 @@
 			<a href="#" class="brand">Galeria FB</a>
 			<ul class="nav pull-right">
 				<li>
-			 		<form>
+			 		<form class="navbar-search">
 						<input type="text" name="search" style="margin:10px 0px 0px 0px;"/>
-						<input type="submit" value="Buscar"/>
+						<input type="submit" class="btn bnt-info" value="Buscar"/>
 					</form>
 			 	</li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li>
 			 		<a href="https://github.com/psyrax/fbwh">Forkeame!</a>
 			 	</li>
