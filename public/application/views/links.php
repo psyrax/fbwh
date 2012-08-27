@@ -1,5 +1,5 @@
 <ul class="thumbnails">	
-  <?php foreach($links as $link):?>
+  <?php if(is_array($links) && count($links))  foreach($links as $link):?>
 	<li class="span3">
     <div class="thumbnail imagenes_lista">
         <div class="imagen_ver">
@@ -17,7 +17,10 @@
       </p>
     </div>
     </li>
-  <?php endforeach;?>
+  <?php endforeach;
+    else{?>
+      <li>No se encontraron resultados.</li>
+  <?php } ?>
 </ul>
 <script>
   $(document).ready(function(){

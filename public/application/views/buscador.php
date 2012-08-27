@@ -1,5 +1,5 @@
 <ul class="thumbnails">	
-  <?php foreach($imagenes as $imagen):?>
+  <?php if(is_array($imagenes) && count($imagenes))  foreach($imagenes as $imagen):?>
 	<li class="span3">
     <div class="thumbnail imagenes_lista">
         <div class="imagen_ver">
@@ -15,7 +15,10 @@
       </p>
     </div>
     </li>
-  <?php endforeach;?>
+  <?php endforeach;
+  else{?>
+      <li>No se encontraron resultados.</li>
+  <?php } ?>
 </ul>
 <script type="text/javascript" src="<?= base_url(); ?>statics/js/FacebookConnect-1.5.js"></script>
 <script>

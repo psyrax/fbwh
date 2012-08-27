@@ -12,5 +12,8 @@
       </p>
     </div>
     </li>
-  <?php endforeach;?>
+  <?php endforeach;
+	  else{?>
+      <li>No se encontraron resultados.</li>
+  <?php } ?>
 </ul>
