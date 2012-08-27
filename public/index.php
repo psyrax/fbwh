@@ -1,5 +1,8 @@
 <?php
 
+require_once("application/libraries/facebook-php-sdk/src/facebook.php");
+$facebook = new Facebook($config);
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
