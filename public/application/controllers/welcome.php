@@ -8,6 +8,12 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		global $facebook;
+		$fbid=$this->session->userdata('id');
+		if($fbid){
+			header("Location:init");
+			exit(0);
+		}
+		
 		$params = array(
   		'scope' => 'read_stream, friends_likes, user_likes,user_photos,user_status,read_stream, publish_stream',
   		'redirect_uri' => site_url('welcome/init')
@@ -29,9 +35,11 @@ class Welcome extends CI_Controller {
 		
 		saveUserData($data['user_data']);
 	}
+	
 	public function imagenes(){
 		$this->load->view('imagenes');
 	}
+	
 	public function videos(){
 		$this->load->view('videos');
 	}
