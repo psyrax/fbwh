@@ -32,8 +32,9 @@ class Stream extends CI_Controller {
 	}
 	
 	public function mark($idPost){
-		  $fbid=$this->session->userdata('id');
-		  $posts=listPosts($fbid);
+		  global $facebook;
+		  $user = $facebook->getUser();
+		  $posts=listPosts($user);
 		  $ppp=null;
 		  foreach($posts as $post){
 			   if($post['post_id']==$idPost){
