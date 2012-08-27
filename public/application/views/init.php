@@ -18,7 +18,7 @@
 		<div class="span2">
 			<ul class="nav nav-list">
 			  <li class="nav-header">Mis cosas</li>
-			  <li class="imagenes"><a href="#" data-dest="imagenes" class="jlink">Imagenes</a></li>
+			  <li class="imagenes"><a href="#" data-dest="imagenes" class="jlink">Im&aacute;genes</a></li>
 			  <li class="videos"><a href="#" data-dest="videos" class="jlink">Videos</a></li>
 			  <li class="links"><a href="#" data-dest="links" class="jlink">Enlaces</a></li>
 			  <li class="favoritos"><a href="#" data-dest="favoritos" class="jlink">Favoritos</a></li>
@@ -28,7 +28,7 @@
 			<div class="page-header">
 				<h1>Hola  <?= $user_data['name']; ?></h1>
 			</div>
-			<p>Esta es la galer&iacute;a de cosa que has compartido o te gusta en FB.</p>
+			<p>Esta es la galer&iacute;a de cosas que has compartido o te gustan en Facebook.</p>
 		</div>
 	</div>
 </div>
