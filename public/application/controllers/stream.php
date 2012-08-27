@@ -37,4 +37,11 @@ class Stream extends CI_Controller {
 		  
 		  die(json_encode($result));
 	}
+	
+	public function words($words){
+		  $fbid=$this->session->userdata('id');
+		  $result=filterPostKeywords($fbid,$words);
+		  print_r($result);
+		  die("''''''''");
+	}
 }
