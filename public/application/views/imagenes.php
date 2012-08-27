@@ -24,10 +24,9 @@
         success: function(data) {
           //$('.nav li').removeClass('active');
           //$('.'+dest).addClass('active');
-          $(this).html('Guardado');
-          console.log('saved');
         }
       });
+      $(this).remove();
     })
   })
 </script>

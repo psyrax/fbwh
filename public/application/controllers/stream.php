@@ -47,7 +47,7 @@ class Stream extends CI_Controller {
 			   }
 		  }
 		  
-		  saveUserPost($ppp,$fbid);
+		  saveUserPost($ppp,$user);
 		  die('OK');
 	}
 }

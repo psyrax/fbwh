@@ -74,4 +74,9 @@ class Welcome extends CI_Controller {
 		$posts=listUserPost($user);
 		$this->load->view('favoritos',array('posts'=>$posts));
 	}
+	public function faver($id){
+		global $facebook;
+		$user = $facebook->getUser();
+		$posts=listUserPost($user);
+	}
 }
