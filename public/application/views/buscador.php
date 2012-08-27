@@ -1,5 +1,5 @@
 <ul class="thumbnails">	
-  <?php if(is_array($imagenes) && count($imagenes))  foreach($imagenes as $imagen):?>
+  <?php if(is_array($imagenes) && count($imagenes))   if(is_array($imagenes) && count($imagenes))  foreach($imagenes as $imagen):?>
 	<li class="span3">
     <div class="thumbnail imagenes_lista">
         <div class="imagen_ver">
