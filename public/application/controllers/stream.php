@@ -23,8 +23,8 @@ class Stream extends CI_Controller {
 		$user = $facebook->getUser();
 		$user_data=$facebook->api('/'.$user,'GET');
 
-		$sql="SELECT post_id, viewer_id, app_id, source_id, updated_time, created_time, filter_key, attribution, actor_id, target_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
-      	FROM stream WHERE source_id = ".$user_data['id']." limit 20";
+		$sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
+      	FROM stream WHERE source_id = ".$user_data['id']." limit 100";
 
 		$data = $facebook->api(array('method' => 'fql.query','query' => $sql));
 		
