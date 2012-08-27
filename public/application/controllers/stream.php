@@ -16,19 +16,17 @@ class Stream extends CI_Controller {
 		$data['login_url']=$facebook->getLoginUrl($params);
 		$this->template->load('template', 'login', $data);
 	}
-	public function get(){
+	public function get($type){
 		global $facebook;
 		$access_token = $facebook->getAccessToken();
-
-		$user = $facebook->getUser();
-		$user_data=$facebook->api('/'.$user,'GET');
 
 		$sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
       	FROM stream WHERE source_id = ".$user_data['id']." limit 100";
 
 		$data = $facebook->api(array('method' => 'fql.query','query' => $sql));
 		
-		echo "<pre>"; print_r($data); echo "</pre>"; 
-
+		$fbid=$this->session->userdata('id');
+		saveListPost($data,$fbid);
+		$ddd=filterPosts($fbid,$type); //"photo"
 	}
 }
