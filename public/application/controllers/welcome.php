@@ -61,6 +61,7 @@ class Welcome extends CI_Controller {
 	public function videos(){
 		global $facebook;
 		$user = $facebook->getUser();
+		$data['user']=$user;
 		$data['videos']=filterPosts($user, 'video');
 		//print_r($data['videos']);
 		$this->load->view('videos',$data);
@@ -68,6 +69,7 @@ class Welcome extends CI_Controller {
 	public function links(){
 		global $facebook;
 		$user = $facebook->getUser();
+		$data['user']=$user;
 		$data['links']=filterPosts($user, 'link');
 		//print_r($data['links']);
 		$this->load->view('links',$data);
@@ -76,24 +78,31 @@ class Welcome extends CI_Controller {
 	public function favoritos(){
 		global $facebook;
 		$user = $facebook->getUser();
+		$data['user']=$user;
 		$posts=listUserPost($user);
-		$this->load->view('favoritos',array('posts'=>$posts));
+		$data['posts']=$posts;
+		$this->load->view('favoritos',$data);
 	}
 	public function faver($id){
 		global $facebook;
 		$user = $facebook->getUser();
+		$data['user']=$user;
 		$posts=listUserPost($user);
 	}
 	
 	public function amigo($idAmigo){
 		global $facebook;
 		$user = $facebook->getUser();
+		$data['user']=$user;
 		$posts=listUserPost($idAmigo);
-		$this->load->view('amigo',array('posts'=>$posts));
+		$posts=listUserPost($user);
+		$data['posts']=$posts;
+		$this->load->view('amigo',$data);
 	}
 	public function buscador($query){
 		global $facebook;
 		$user = $facebook->getUser();
+		$data['user']=$user;
 		$data['imagenes']=filterPostKeywords($user,$query);
 		$this->load->view('buscador',$data);
 		//print_r($result);
