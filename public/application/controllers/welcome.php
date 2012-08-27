@@ -49,6 +49,7 @@ class Welcome extends CI_Controller {
 	public function imagenes(){
 		global $facebook;
 		$user = $facebook->getUser();
+		$data['user']=$user;
 		$data['imagenes']=filterPosts($user, 'photo');
 		$this->load->view('imagenes',$data);
 	}
