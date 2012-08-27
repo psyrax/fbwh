@@ -17,6 +17,7 @@
 			  <li class="nav-header">Mis cosas</li>
 			  <li class="imagenes"><a href="#" data-dest="imagenes" class="jlink">Imagenes</a></li>
 			  <li class="videos"><a href="#" data-dest="videos" class="jlink">Videos</a></li>
+			  <li class="links"><a href="#" data-dest="links" class="jlink">links</a></li>
 			</ul>
 		</div>
 		<div class="span10 contenido">
@@ -34,6 +35,8 @@
 			$.ajax({
 			  url: '<?= site_url("welcome"); ?>/'+dest,
 			  success: function(data) {
+			  	$('.nav li').removeClass('active');
+			  	$('.'+dest).addClass('active');
 			    $('.contenido').html(data);
 			  }
 			});
