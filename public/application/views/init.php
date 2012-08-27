@@ -4,9 +4,8 @@
 			<a href="#" class="brand">Galeria FB</a>
 			<ul class="nav pull-right">
 				<li>
-			 		<form class="navbar-search">
-						<input type="text" name="search" style="margin:10px 0px 0px 0px;"/>
-						<input type="submit" class="btn bnt-info" value="Buscar"/>
+			 		<form class="navbar-search buscador" action="#">
+						<input type="text" class="search-query s_query" name="search" placeholder="Buscar"/>
 					</form>
 			 	</li>
 				<li>
@@ -35,7 +34,7 @@
 			  <?php foreach($friends as $friend){?>
 			  <li class="amigo">
 				<a href="#" data-dest="amigo/<?=$friend['uid']?>" class="jlink">
-					<img src="<?=$friend['pic_square']?>"/>
+					<img src="<?=$friend['pic_square']?>" style="height:25px"/> <?= $friend['name']; ?>
 				</a>
 			  </li>
 			  <?php } ?>
@@ -68,8 +67,20 @@
 				$('.contenido').html(data);
 			  }
 			});
-			
 			return false;
 		});
+		$('.buscador').submit(function(){
+			var query=$('.s_query').val();
+			$.ajax({
+			  url: '<?= site_url("welcome/buscador"); ?>/'+query,
+			  beforeSend: function(){
+			  	$('.contenido').html('<div style="text-align:center;"><img src="<?= base_url(); ?>statics/img/loader.gif" /><br />Cargando... brb</div>');
+			  },
+			  success: function(data) {
+				$('.contenido').html(data);
+			  }
+			});
+			return false;
+		})
 	});
 </script>

@@ -3,7 +3,8 @@
 	<li class="span3">
     <div class="thumbnail imagenes_lista">
         <div class="imagen_ver">
-      	   <img src="<?= $link['attachment']['media']['0']['src'] ?>" alt="" />
+      	   <?php $imagen_normal=str_replace("_s.", "_n.", $link['attachment']['media']['0']['src']);?>
+            <img src="<?= $imagen_normal; ?>" alt="" />
         </div>
       <p class="text_ver"><?= $link['attachment']['caption']; ?></p>
       

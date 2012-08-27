@@ -91,4 +91,12 @@ class Welcome extends CI_Controller {
 		$posts=listUserPost($idAmigo);
 		$this->load->view('amigo',array('posts'=>$posts));
 	}
+	public function buscador($query){
+		global $facebook;
+		$user = $facebook->getUser();
+		$data['imagenes']=filterPostKeywords($user,$query);
+		$this->load->view('buscador',$data);
+		//print_r($result);
+		//die("''''''''");
+	}
 }
