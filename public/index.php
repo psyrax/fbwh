@@ -7,6 +7,10 @@ $config['appId'] = '403383003054246';
 $config['secret'] = '2720aec1ddeee51052fc1114c583d966';
 $config['fileUpload'] = false; // optional
 
+
+define('APP_ID',"403383003054246");
+define('APP_SECRET',"2720aec1ddeee51052fc1114c583d966");
+
 $facebook = new Facebook($config);
 
 /*
