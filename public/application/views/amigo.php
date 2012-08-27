@@ -18,9 +18,16 @@
     </div> 
   <?php endforeach;?>
 </div>
-
 <script>
+
+  var fb;
   $(document).ready(function(){
+
+      fb = new FacebookConnect(false, function(response){
+    });
+
+
+
     $('.faver').on('click', function(){
       var fid=$(this).data('fav');
       $.ajax({
@@ -33,12 +40,13 @@
       $(this).remove();
     })
     $('.sharer').on('click', function(){
+
       var uid = "<?= $user; ?>";
       var message = "Ve esto:";
       var desc = $(this).data('caption');
       var link =$(this).data('href');
       var img = $(this).data('img');
-      //new sendMessage(uid,message,desc,link,img);
+      new sendMessage(uid,message,desc,link,img);
     });
 
     $(".img").mouseover(function(e){
@@ -66,5 +74,15 @@
 
   });
 
+  function sendMessage(uid,message,desc,link,img){
 
+     fb.sendMensage(message, uid, link, img, desc, function(response){
+      for(r in response){
+        console.log(response[r]);
+      }
+   
+
+  });
+   
+  }
 </script>

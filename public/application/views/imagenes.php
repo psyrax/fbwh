@@ -1,3 +1,4 @@
+<div id="fb-root"></div>
 <script type="text/javascript" src="<?= base_url(); ?>statics/js/FacebookConnect-1.5.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>statics/js/jquery.masonry.min.js"></script>
 
@@ -12,7 +13,7 @@
         <p class="btns" align="right">
             <a href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-mini btn-info" target="_blank">Ver en Facebook</a>
             <button data-fav="<?= $imagen['post_id']; ?>" class="btn btn-success btn-mini faver">Agregar a favoritos</button>
-            <?php /* <button data-img="<?= $imagen['attachment']['media']['0']['src']; ?>" data-desc="<?= $imagen['attachment']['caption']; ?>"  data-href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-inverse btn-mini sharer">Compartir</button> */?>
+            <button data-img="" data-desc="<?= $imagen['attachment']['caption']; ?>"  data-href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-inverse btn-mini sharer">Compartir</button>
         </p>
       </div>
     </div> 
@@ -20,7 +21,15 @@
 </div>
 
 <script>
+
+  var fb;
   $(document).ready(function(){
+
+      fb = new FacebookConnect(false, function(response){
+    });
+
+
+
     $('.faver').on('click', function(){
       var fid=$(this).data('fav');
       $.ajax({
@@ -33,12 +42,13 @@
       $(this).remove();
     })
     $('.sharer').on('click', function(){
+
       var uid = "<?= $user; ?>";
       var message = "Ve esto:";
       var desc = $(this).data('caption');
       var link =$(this).data('href');
       var img = $(this).data('img');
-      //new sendMessage(uid,message,desc,link,img);
+      new sendMessage(uid,message,desc,link,img);
     });
 
     $(".img").mouseover(function(e){
@@ -66,5 +76,15 @@
 
   });
 
+  function sendMessage(uid,message,desc,link,img){
 
+     fb.sendMensage(message, uid, link, img, desc, function(response){
+      for(r in response){
+        console.log(response[r]);
+      }
+   
+
+  });
+   
+  }
 </script>

@@ -95,7 +95,6 @@ class Welcome extends CI_Controller {
 		$user = $facebook->getUser();
 		$data['user']=$user;
 		$posts=listUserPost($idAmigo);
-		$posts=listUserPost($user);
 		$data['posts']=$posts;
 		$this->load->view('amigo',$data);
 	}
