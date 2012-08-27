@@ -34,15 +34,19 @@ class Welcome extends CI_Controller {
 		$data['login_url']=$facebook->getLoginUrl($params);
 		$this->template->load('template', 'login', $data);
 	}
+	
 	public function init(){
 		global $facebook;
 		$access_token = $facebook->getAccessToken();
 		$user = $facebook->getUser();
 		$data['user_data']=$facebook->api('/'.$user,'GET');
-		$this->session->set_userdata('fb',$data['user_data']);
+		$data['friends']=listAppFriends($user);
+		
+		//$this->session->set_userdata('fb',$data['user_data']);
 		$this->template->load('template', 'init', $data);
-		$this->session->set_userdata('fb',$data['user_data']);
-		$this->session->set_userdata('id',$data['user_data']['id']);
+		//$this->session->set_userdata('fb',$data['user_data']);
+		//$this->session->set_userdata('id',$data['user_data']['id']);
+		
 		saveUserData($data['user_data']);
 	}
 	
@@ -79,5 +83,12 @@ class Welcome extends CI_Controller {
 		global $facebook;
 		$user = $facebook->getUser();
 		$posts=listUserPost($user);
+	}
+	
+	public function amigo($idAmigo){
+		global $facebook;
+		$user = $facebook->getUser();
+		$posts=listUserPost($idAmigo);
+		$this->load->view('amigo',array('posts'=>$posts));
 	}
 }

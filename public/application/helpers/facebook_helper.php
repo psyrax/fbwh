@@ -118,3 +118,15 @@ function getUserData($fbId){
     }
     return $array;
 }
+
+function listAppFriends($fbId){
+    global $facebook;
+    $access_token = $facebook->getAccessToken();
+
+    $user = $facebook->getUser();
+    $sql = "SELECT uid, name, pic_square FROM user WHERE is_app_user  AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())";
+    $data = $facebook->api(array('method' => 'fql.query','query' => $sql));
+
+    return $data;
+}
+
