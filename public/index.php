@@ -1,6 +1,12 @@
 <?php
 
 require_once("application/libraries/facebook-php-sdk/src/facebook.php");
+
+$config = array();
+$config[‘appId’] = '403383003054246';
+$config[‘secret’] = '2720aec1ddeee51052fc1114c583d966';
+$config[‘fileUpload’] = false; // optional
+
 $facebook = new Facebook($config);
 
 /*
