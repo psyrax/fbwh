@@ -69,8 +69,9 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function favoritos(){
-		$fbid=$this->session->userdata('id');
-		$posts=listUserPost($fbid);
+		global $facebook;
+		$user = $facebook->getUser();
+		$posts=listUserPost($user);
 		$this->load->view('favoritos',array('posts'=>$posts));
 	}
 }
