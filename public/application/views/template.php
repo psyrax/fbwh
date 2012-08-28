@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
-		<title>FBWHMC</title>
+		<title>Memorabilia de FB</title>
 		<script src="<?= site_url('statics/js/modernizador.js'); ?>" type="text/javascript"></script>
 		<script src="http://code.jquery.com/jquery-1.8.0.min.js" type="text/javascript"></script>
 		<script src="<?= site_url('statics/js/bootstrap.min.js'); ?>" type="text/javascript"></script>

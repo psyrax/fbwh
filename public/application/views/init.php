@@ -1,7 +1,7 @@
 <div class="navbar navbar-static-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<a href="#" class="brand">Galeria FB</a>
+			<a href="#" class="brand">Memorabilia de FB</a>
 			<ul class="nav pull-right">
 				<li>
 			 		<form class="navbar-search buscador" action="#">

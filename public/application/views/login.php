@@ -2,14 +2,16 @@
 	<div class="row">
 		<div class="span12">
 			<div class="hero-unit">
-			  <h1>Galeria de FB</h1>
-			  <p> ¿Recuerdas ese elemento que te gust&oacute; en FB y no lo encuentras para mostrarlo a alguien mas?
-			      Ya no mas con nuestra app.
+			  <h1>Memorabilia de FB http://oglabs.info/fb</h1>
+			  <p> Encuentra todo lo que alguna vez has compartido
 			  </p>
 			  <p>
 			    <a class="btn btn-primary btn-large" href="<?= $login_url; ?>">
 			    	Login con Facebook
 			    </a>
+			  </p>
+			  <p>
+			  	<img src="<?= site_url('statics/img/code.png') ?>" /> 
 			  </p>
 			</div>
 		</div>
