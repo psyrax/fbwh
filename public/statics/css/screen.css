@@ -10,9 +10,8 @@
 	overflow: hidden;
 }
 
-.btns { margin-right: 10px; bottom:0; position: absolute; }
+.btns {bottom:0; position: absolute; text-align:right;width: 95%;}
 
-.btn-info { margin-bottom:5px; }
 
 #container .img {
 	margin: 3px;

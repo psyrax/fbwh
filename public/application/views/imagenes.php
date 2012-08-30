@@ -3,26 +3,39 @@
 <script type="text/javascript" src="<?= base_url(); ?>statics/js/jquery.masonry.min.js"></script>
 
 <div id="container">
-  <?php if(is_array($imagenes) && count($imagenes))   foreach($imagenes as $imagen):?>
+  <?php if(is_array($imagenes) && count($imagenes)){   foreach($imagenes as $imagen):?>
 
     <div class="img">
        <?php $imagen_normal=str_replace("_s.", "_n.", $imagen['attachment']['media']['0']['src']);?>
        <img src="<?= $imagen_normal; ?>" alt="" />
        <div class="info">
         <p class="text_ver"><?= $imagen['attachment']['caption']  ?></p>
-        <p class="btns" align="right">
-            <a href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-mini btn-info" target="_blank">Ver en Facebook</a>
-            <button data-fav="<?= $imagen['post_id']; ?>" class="btn btn-success btn-mini faver">Agregar a favoritos</button>
-            <button data-img="" data-desc="<?= $imagen['attachment']['caption']; ?>"  data-href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-inverse btn-mini sharer">Compartir</button>
+        <p class="btns pull-right">
+            <button class="btn btn-primary btn-mini zoomer" data-zoomed="<?= $imagen_normal; ?>"><i class="icon-zoom-in icon-white"></i></button>
+            <a href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn  btn-info btn-mini" target="_blank"><i class="icon-circle-arrow-right icon-white"></i> </a>
+            <button data-fav="<?= $imagen['post_id']; ?>" class="btn btn-success btn-mini faver"><i class="icon-star icon-white"></i> </button>
+            <button data-img="" data-desc="<?= $imagen['attachment']['caption']; ?>"  data-href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-inverse btn-mini sharer"><i class="icon-share icon-white"></i> </button>
         </p>
       </div>
-    </div> 
-  <?php endforeach;
-  else{?>
+    </div>
+
+  <?php endforeach;?>
+  <?php }else{?>
       <li>No se encontraron resultados.</li>
   <?php } ?>
 </div>
+<div class="modal hide fade" id="zoom_imagen">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="zoom_header">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p id="zoom-body"><img id="zoom-img"></img></p>
+  </div>
+  <div class="modal-footer">
 
+  </div>
+</div>
 <script>
 
   var fb;
@@ -43,6 +56,15 @@
         }
       });
       $(this).remove();
+    });
+    $('.zoomer').on('click', function(){
+      var zoomed=$(this).data('zoomed');
+      $('#zoom-img').attr('src',zoomed);
+      $('#zoom_imagen').modal('show');
+
+    });
+    $('#zoom_imagen').on('shown', function(){
+      
     })
     $('.sharer').on('click', function(){
 
