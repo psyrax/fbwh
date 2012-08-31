@@ -41,7 +41,7 @@ class Welcome extends CI_Controller {
 		$user = $facebook->getUser();
 		$data['user_data']=$facebook->api('/'.$user,'GET');
 		$data['friends']=listAppFriends($user);
-		
+		$data['posts']=filterPosts($user);
 		//$this->session->set_userdata('fb',$data['user_data']);
 		$this->template->load('template', 'init', $data);
 		//$this->session->set_userdata('fb',$data['user_data']);

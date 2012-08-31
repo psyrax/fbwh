@@ -46,10 +46,25 @@
 				<h1>Hola  <?= $user_data['name']; ?></h1>
 			</div>
 			<p>Esta es la galer&iacute;a de cosas que has compartido o te gustan en Facebook.</p>
+			<div id="galleria">
+				<?php foreach ($posts as $post) {?>
+					<?php $imagen_normal=str_replace("_s.", "_n.", $post['attachment']['media']['0']['src']);?>
+					<?php $imagen_normal=str_replace("_b.", "_n.", $imagen_normal);?>
+       				<img src="<?= $imagen_normal; ?>" alt=""  data-title="<?= $post['attachment']['name'];?>" data-description="<?= $post['attachment']['description'];?>"/>
+				<?php } ?>
+			</div>
 		</div>
 	</div>
 </div>
 <script>
+	$('#galleria').galleria({
+		width: 960,
+		height: 400,
+    	transition: 'fade',
+    	autoplay: 5000,
+    	imageCrop: true,
+    	lightbox: true
+	});
 	$(document).ready(function(){
 		$('.jlink').on('click',function(){
 			var friend=$(this).parent().attr('class');

@@ -60,7 +60,7 @@ function filterPostKeywords($fbid,$words){
 }
 
 
-function filterPosts($fbid,$media_type){
+function filterPosts($fbid,$media_type=NULL){
     $result=null;
     
     global $facebook;
@@ -77,8 +77,11 @@ FROM stream WHERE source_id = ".$fbid." limit 100";
       foreach($data as $post){
           if(key_exists('attachment',$post) && key_exists('media',$post['attachment'])){
               foreach($post['attachment']['media'] as $media){
-                  if($media['type']==$media_type)
-                      $result[]=$post;
+                  if($media['type']==$media_type):
+                    $result[]=$post;
+                  elseif(!$media_type&&$media['type']!='link'):
+                    $result[]=$post;
+                  endif;
               }
           }
       }
