@@ -10,9 +10,8 @@
        <div class="info">
         <p class="text_ver"><?= $video['attachment']['caption']  ?></p>
         <p class="btns" align="right">
-            <a href="<?= $video['attachment']['media']['0']['href']; ?>" class="btn btn-mini btn-info" target="_blank">Ver en Facebook</a>
-            <button data-fav="<?= $video['post_id']; ?>" class="btn btn-success btn-mini faver">Agregar a favoritos</button>
-            <button data-img="" data-desc="<?= $video['attachment']['caption']; ?>"  data-href="<?= $video['attachment']['media']['0']['href']; ?>" class="btn btn-inverse btn-mini sharer">Compartir</button> 
+            <a href="<?= $video['attachment']['media']['0']['href']; ?>" class="btn  btn-info btn-mini" target="_blank"><i class="icon-circle-arrow-right icon-white"></i> </a>
+            <button data-fav="<?= $video['post_id']; ?>" class="btn btn-success btn-mini faver"><i class="icon-star icon-white"></i> </button>
         </p>
       </div>
     </div> 

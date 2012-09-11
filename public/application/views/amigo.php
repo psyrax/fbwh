@@ -10,15 +10,13 @@
        <div class="info">
         <p class="text_ver"><?= $imagen['attachment']['caption']  ?></p>
         <p class="btns" align="right">
-            <a href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-mini btn-info" target="_blank">Ver en Facebook</a>
-            <button data-fav="<?= $imagen['post_id']; ?>" class="btn btn-success btn-mini faver">Agregar a favoritos</button>
-            <?php /* <button data-img="<?= $imagen['attachment']['media']['0']['src']; ?>" data-desc="<?= $imagen['attachment']['caption']; ?>"  data-href="<?= $imagen['attachment']['media']['0']['href']; ?>" class="btn btn-inverse btn-mini sharer">Compartir</button> */?>
+          
         </p>
       </div>
     </div> 
   <?php endforeach;
   else{?>
-      <li>No se encontraron resultados.</li>
+      <li>Tus amigo no ha agregado favoritos.</li>
   <?php } ?>
 </div>
 <script>

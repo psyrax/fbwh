@@ -1,27 +1,22 @@
-<ul class="thumbnails">	
-  <?php if(is_array($links) && count($links))  foreach($links as $link):?>
-	<li class="span3">
-    <div class="thumbnail imagenes_lista">
-        <div class="imagen_ver">
-      	   <?php $imagen_normal=str_replace("_s.", "_n.", $link['attachment']['media']['0']['src']);?>
-            <img src="<?= $imagen_normal; ?>" alt="" />
-        </div>
-      <p class="text_ver"><?= $link['attachment']['caption']; ?></p>
-      
-        <p>
-          <a href="<?= $link['attachment']['media']['0']['href']; ?>" class="btn btn-info btn-mini" target="_blank">Ver en Facebook</a>
-          <?php if(isset($link['attachment']['href'])):?>
-          	<a href="<?= $link['attachment']['href']; ?>" class="btn btn-primary btn-mini" target="_blank">Ver link</a>
-          <?php endif;?>
-          <button data-fav="<?= $link['post_id']; ?>" class="btn btn-success btn-mini faver">Agregar a favoritos</button>
-      </p>
+<?php if(is_array($links) && count($links))  foreach($links as $link):if(isset($link['attachment']['href'])):?>
+  <div class="row">
+    <div class="span1">
+      <?php $imagen_normal=str_replace("_s.", "_n.", $link['attachment']['media']['0']['src']);?>
+      <img src="<?= $imagen_normal; ?>" alt="" class="img-polaroid"/>
     </div>
-    </li>
-  <?php endforeach;
-    else{?>
-      <li>No se encontraron resultados.</li>
-  <?php } ?>
-</ul>
+    <div class="span6">
+      <p class="lead"><?= $link['message'];?></p>
+      <p><a href="<?= $link['attachment']['href']; ?>" target="_blank"><?= $link['attachment']['name'] ?></p>
+      <p>
+        <a href="<?= $link['attachment']['media']['0']['href']; ?>" class="btn  btn-info btn-mini" target="_blank"><i class="icon-circle-arrow-right icon-white"></i> </a>
+        <button data-fav="<?= $link['post_id']; ?>" class="btn btn-success btn-mini faver"><i class="icon-star icon-white"></i> </button>
+    </p>
+    </div>
+  </div>
+  <hr />
+  <?php endif;endforeach;else{?>
+    No se encontraron resultados.
+<?php } ?>
 <script>
   $(document).ready(function(){
     $('.faver').on('click', function(){

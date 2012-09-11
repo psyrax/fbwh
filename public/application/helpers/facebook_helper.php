@@ -26,8 +26,8 @@ function filterPostKeywords($fbid,$words){
     $access_token = $facebook->getAccessToken();
     //$fbid=$this->session->userdata('id');
 
-		$sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
-      	FROM stream WHERE source_id = ".$fbid." limit 100";
+		$sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, likes, privacy, type, permalink, xid
+      	FROM stream WHERE source_id = ".$fbid." limit 300";
 
 		$data = $facebook->api(array('method' => 'fql.query','query' => $sql));
 		
@@ -67,25 +67,25 @@ function filterPosts($fbid,$media_type=NULL){
     $access_token = $facebook->getAccessToken();
     //$fbid=$this->session->userdata('id');
 
-    $sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
-FROM stream WHERE source_id = ".$fbid." limit 100";
+    $sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, likes, privacy, type, permalink, xid
+FROM stream WHERE source_id = ".$fbid." limit 300";
 
     $data = $facebook->api(array('method' => 'fql.query','query' => $sql));
     
-    $result=null;
+    $result=array();
     
       foreach($data as $post){
           if(key_exists('attachment',$post) && key_exists('media',$post['attachment'])){
               foreach($post['attachment']['media'] as $media){
                   if($media['type']==$media_type):
-                    $result[]=$post;
+                    array_push($result, $post);
                   elseif(!$media_type&&$media['type']!='link'):
-                    $result[]=$post;
+                      array_push($result, $post);
                   endif;
               }
           }
       }
-    
+    $result = array_map("unserialize", array_unique(array_map("serialize", $result)));
     return $result;
 }
 
@@ -98,7 +98,7 @@ function listPosts($fbid){
     //$fbid=$this->session->userdata('id');
 
     $sql="SELECT post_id, viewer_id, app_id, source_id, created_time, attribution, actor_id, message, app_data, action_links, attachment, comments, likes, privacy, type, permalink, xid
-FROM stream WHERE source_id = ".$fbid." limit 100";
+FROM stream WHERE source_id = ".$fbid." limit 300";
 
     $data = $facebook->api(array('method' => 'fql.query','query' => $sql));
     

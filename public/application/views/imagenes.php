@@ -27,7 +27,7 @@
 <div class="modal hide fade" id="zoom_imagen">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3 id="zoom_header">Modal header</h3>
+    <h3 id="zoom_header">Zoom!</h3>
   </div>
   <div class="modal-body">
     <p id="zoom-body"><img id="zoom-img"></img></p>

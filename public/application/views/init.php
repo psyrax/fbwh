@@ -1,7 +1,7 @@
 <div class="navbar navbar-static-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<a href="#" class="brand">Memorabilia de FB</a>
+			<a href="<?= base_url('welcome/init') ?>" class="brand">Memorabilia de FB</a>
 			<ul class="nav pull-right">
 				<li>
 			 		<form class="navbar-search buscador" action="#">
@@ -30,7 +30,7 @@
 			</ul>
 			
 			<ul class="nav nav-list">
-			  <li class="nav-header">Amigos usando la App</li>
+			  <li class="nav-header">Favoritos de mis amigos</li>
 			  <?php foreach($friends as $friend){?>
 			  <li class="amigo">
 				<a href="#" data-dest="amigo/<?=$friend['uid']?>" class="jlink">
